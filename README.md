@@ -8,27 +8,26 @@ The back-end for Ignio leveraged by spring boot microservices
 * [Spring Boot](https://spring.io/projects/spring-boot) - Framework to ease the bootstrapping and development of new Spring Applications
 * [MongoDB](https://docs.mongodb.com/) - Open-Source Relational Database Management System
 * [git](https://git-scm.com/) - Free and Open-Source distributed version control system 
-* [Thymeleaf](https://www.thymeleaf.org/) - Modern server-side Java template engine for both web and standalone environments.
 * [Prometheus](https://prometheus.io/) - Monitoring system and time series database
 * [Postman](https://www.getpostman.com/) - API Development Environment (Testing Docmentation)
 
-## To-Do
+## Task tracker
 
 - [x] Service Discovery (Eureka)
-- [ ] Actuator
+- [x] Actuator
 - [ ] Logger (Console, File, Mail)
-- [ ] RESTful Web Service (CRUD) / Endpoints
+- [x] RESTful Web Service (CRUD) / Endpoints
 - [ ] HATEOS
-- [ ] Spring Boot Admin
-- [ ] MongoDB Integration
+- [x] Spring Boot Admin
+- [x] MongoDB Integration
 - [ ] Micrometer
 - [ ] Grafna
-- [ ] Content Negotiation
-- [ ] Security
+- [x] Content Negotiation
+- [x] Security
 - [ ] Dynamic API tokens
-- [ ] Docker configurations
+- [x] Docker configurations
 - [ ] Kubernetes deployment
-- [ ] Production Ops
+- [x] Production Ops
 
 ## Running the application locally
 
@@ -60,7 +59,7 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 * [Postman Collection](https://github.com/AnanthaRajuC/Spring-Boot-Application-Template/blob/master/Spring%20Boot%20Template.postman_collection.json) - offline
 * [Swagger](http://localhost:8088/swagger-ui.html) - Documentation & Testing
 
-## Files and Directories
+## Files and Directories [TODO]
 
 The project (a.k.a. project directory) has a particular directory structure. A representative project is shown below:
 
@@ -110,19 +109,24 @@ The project (a.k.a. project directory) has a particular directory structure. A r
 ```
 
 ## Services
-- `discovery-server` -- Provide service discovery of between microservices
+- `gateway-server` -- Provide route handling and proxy as a gateway to the microservices and UAA service
+- `ignio-registry` -- Provide service discovery of between microservices and registration
+- `device-data-service` -- Provide CRUD operations for device data and associated entities
+- `device-analysis-service` -- Provide analysis of the device data and provide real-time alerts
 
-## packages
+## packages in each microservice
 
-- `models` — to hold our entities;
-- `repositories` — to communicate with the database;
-- `services` — to hold our business logic;
-- `controllers` — to listen to the client;
+- `domain` — to hold our entities;
+- `repository` — to communicate with the database;
+- `service` — to hold our business logic;
+- `web.rest` — to listen to the client and associated rest endpoints;
 
 - `resources/` - Contains all the static resources, templates and property files.
+- `resources/config` - Contains all the configuration files.
+- `resources/i18n` - Contains message properties.
 - `resources/static` - contains static resources such as css, js and images.
 - `resources/templates` - contains server-side templates which are rendered by Spring.
-- `resources/application.properties` - It contains application-wide properties. Spring reads the properties defined in this file to configure your application. You can define server’s default port, server’s context path, database URLs etc, in this file.
+- `resources/config/application.yml, application-dev.yml, application-prod.yml` - Contains application-wide properties. Spring reads the properties defined in these files to configure the application including server’s default port, server’s context path, database URLs etc.
 
 - `test/` - contains unit and integration tests
 
